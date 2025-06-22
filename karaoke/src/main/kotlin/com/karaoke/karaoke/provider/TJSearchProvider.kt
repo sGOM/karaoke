@@ -1,9 +1,9 @@
 package com.karaoke.karaoke.provider
 
 import com.karaoke.karaoke.SongDto
-import org.slf4j.Logger
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import org.slf4j.Logger
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
@@ -51,10 +51,7 @@ class TJSearchProvider(
         }
         val doc: Document = Jsoup.parse(htmlBody)
 
-        if (doc.selectFirst("div.music-search-list > p.nodata") != null ||
-            doc.selectFirst(".chart-list-area.music:contains(검색결과를 찾을수 없습니다.)") != null ||
-            htmlBody.contains("검색결과를 찾을수 없습니다.")
-        ) {
+        if (doc.selectFirst("div.music-search-list > p.nodata") != null || doc.selectFirst("p.no-date") != null) {
             logger.info("TJ미디어 검색 결과 없음 메시지 확인됨.")
             return emptyList()
         }
