@@ -76,7 +76,13 @@ class TJSearchProviderTest {
     fun `search - 성공적으로 노래 목록을 파싱하여 반환한다`() {
         // Arrange
         val songData = listOf(
-            mapOf("songId" to "85842", "title" to "Love wins all", "singer" to "IU", "composer" to "서동환", "lyricist" to "아이유"),
+            mapOf(
+                "songId" to "85842",
+                "title" to "Love wins all",
+                "singer" to "IU",
+                "composer" to "서동환",
+                "lyricist" to "아이유"
+            ),
             mapOf("songId" to "33393", "title" to "좋은날", "singer" to "IU", "composer" to "이민수", "lyricist" to "김이나")
         )
         val htmlResponse = createHtmlResponseWithSongs(songData)
